@@ -61,7 +61,7 @@ I did not change the numbers and chose to keep as 800 character as chunk size an
 
 **Chunk 1** — source: `admin_add_drop_deadline.txt#0` — produced by: `chunker.py::split_documents`
 
-```
+```text
 On the add/drop deadline
 
 You can add a course through the end of the second week. Dropping is a longer window — through the end of week six — but a drop after week two shows as a W on your transcript. Nothing anywhere on the registrar's site says this plainly, and students find out from each other.
@@ -120,9 +120,16 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 
 **Question:**
 
+What is the grade appeal process?
+
 **Answer:**
 
 ```
+A grade appeal starts with the instructor and must be raised within fifteen days of the grade posting before it can go to the department. Skipping the instructor step will result in the appeal being returned. 
+
+Source: admin_grade_appeals.txt
+
+Sources retrieved: admin_grade_appeals.txt, course_engl_205_exams.txt, course_stat_150.txt, course_stat_150_exams.txt
 ```
 
 **My relevance cutoff:**
@@ -138,7 +145,18 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+| What are library hours? | Yes | 0.389 |
+| What is the grade appeal process? | Yes | 0.259 |
+| what is the cost and time to get official transcripts? | Yes | 0.131 |
+| Is there WiFi in the college? | Yes | 0.483 |
+| How to survive MATH 220 Linear Algebra class | Yes |  0.352 |
+| What is the capital of Mongolia? | No |  0.824 |
+| How do I change the oil in a diesel engine? | No |  0.825 |
+| Who won the 1994 World Cup?| No |  0.886|
+| What is the recommended dosage of ibuprofen for a headache? | No |  0.844 |
+| How do I write a for loop in Rust? | No |  0.896 |
+
+Based on the above data all of my distance don't cross 0.48, but I am increasing the threshold and making it 0.50. There is drastic different between in-corpus and out-of-corpus questions.
 
 ## How I Used AI
 
