@@ -29,6 +29,8 @@ Reethika Gogireddy - Campus Life corpus
 
      Milestone 5. -->
 
+     The corpus I picked is Campus Life. It answers different kinds of questions related to campus life, suriving different classes, library hours and other things. It basically answers student's doubts by retrieving the answers from documents which are written or answered by other students.
+
 ## Chunking Strategy
 
 **Chunk size:**
@@ -168,6 +170,10 @@ Based on the above data all of my distance don't cross 0.48, but I am increasing
      "I used AI to help me code" is not.
 
      Milestone 5. -->
+
+     1. I asked ChatGPT if my reasoning of chunk size and chunk overlap is correct or not. I also asked if the threshold I set for relevance gate is valid. In both the cases, it said I am on the right track. 
+
+     2. I asked ChatGPT to write the chunking function based on my corpus, I asked it to divide the document into chunks if they are more than chunk size and set the produced_by field to chunker.py::split_documents to match the project requirements.
 
 **1.**
 

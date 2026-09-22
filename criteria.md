@@ -26,7 +26,7 @@ contains the answer.
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
 
-All of the questions that I asked have only one document for each question. So, I don't see any reason why it would 
+All of the questions that I asked have only one document for each question. So, I don't see any reason why it would not pass something.
 
 ---
 
@@ -101,7 +101,7 @@ The system answers each test question in under 5 seconds.
 
 **Why this target:**
 
-My corpus is relatively small, so retrieval and generation should complete quickly.
+My corpus is relatively small, so retrieval shouldn't take much time.
 
 
 
