@@ -4,19 +4,6 @@
 
 Reethika Gogireddy - Campus Life corpus
 
-> **This file is your submission.** Fill it in as you go — most sections get
-> written during the milestone that produces them, not at the end.
->
-> How the starter works, and every command you'll need, is in `RUNNING.md`.
-> Leave that file alone.
->
-> **Paste everything as text.** No screenshots, no video. A typed table gets
-> full credit; a picture of the same table gets none.
->
-> Delete these instruction blocks as you replace them. The `<!-- -->` comments
-> are notes to you and don't show up when the page renders — you can leave them
-> or remove them.
-
 ---
 
 # Unit 1
@@ -46,7 +33,7 @@ Reethika Gogireddy - Campus Life corpus
 
      Milestone 3. -->
 
-I did not change the numbers and chose to keep as 800 character as chunk size and 120 chunk overlap because my documents are shorter than 800 characters, and they consist of coherent reviews in each document. By reducing the chunk size, I would seperating important imformation.
+I did not change the numbers and chose to keep as 800 characters as chunk size and 120 chunk overlap because my documents are shorter than 800 characters, and they consist of coherent reviews in each document. By reducing the chunk size, I would seperating important imformation.
 
 
 
@@ -171,13 +158,11 @@ Based on the above data all of my distance don't cross 0.48, but I am increasing
 
      Milestone 5. -->
 
-     1. I asked ChatGPT if my reasoning of chunk size and chunk overlap is correct or not. I also asked if the threshold I set for relevance gate is valid. In both the cases, it said I am on the right track. 
+     
 
-     2. I asked ChatGPT to write the chunking function based on my corpus, I asked it to divide the document into chunks if they are more than chunk size and set the produced_by field to chunker.py::split_documents to match the project requirements.
+**1.** I asked ChatGPT if my reasoning of chunk size and chunk overlap is correct or not. I also asked if the threshold I set for relevance gate is valid. In both the cases, it said I am on the right track. 
 
-**1.**
-
-**2.**
+**2.** I asked ChatGPT if my reasoning of chunk size and chunk overlap is correct or not. I also asked if the threshold I set for relevance gate is valid. In both the cases, it said I am on the right track. 
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
