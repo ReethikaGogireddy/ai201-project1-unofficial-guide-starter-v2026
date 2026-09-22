@@ -75,7 +75,7 @@ It should not make up and information that is not there and strictly stick to th
        - "No chunk is shorter than 200 characters, since anything below that
           in my corpus turned out to be a heading with no content under it." -->
 
-No chunk contains only headings or formatting.
+No chunk should contain only headings or formatting.
 
 
 
