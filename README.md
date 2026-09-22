@@ -145,7 +145,7 @@ Sources retrieved: admin_grade_appeals.txt, course_engl_205_exams.txt, course_st
 | What is the recommended dosage of ibuprofen for a headache? | No |  0.844 |
 | How do I write a for loop in Rust? | No |  0.896 |
 
-Based on the above data all of my distance don't cross 0.48, but I am increasing the threshold and making it 0.50. There is drastic different between in-corpus and out-of-corpus questions.
+Based on the above data all of my distance doesn't cross 0.48, but I am increasing the threshold and making it 0.50. And there is also a drastic different between in-corpus and out-of-corpus questions from which I came to a conclusion to set 0.50 as threshold for relevance gate.
 
 ## How I Used AI
 
@@ -158,7 +158,7 @@ Based on the above data all of my distance don't cross 0.48, but I am increasing
 
      Milestone 5. -->
 
-     
+
 
 **1.** I asked ChatGPT if my reasoning of chunk size and chunk overlap is correct or not. I also asked if the threshold I set for relevance gate is valid. In both the cases, it said I am on the right track. 
 
