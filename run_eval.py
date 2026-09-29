@@ -53,20 +53,66 @@ def load_scorer():
 
 
 def run_once(question: str, top_k, threshold, corpus, variant):
-    """One question, one run. Returns the answer and what retrieval gave us."""
+    """One question, one run. Returns the answer and timing information."""
+
+    import time
     from store import search
     import gate
     from generate import answer_from_chunks
 
-    results = search(question, top_k=top_k, corpus=corpus, variant=variant)
+    # 1. Retrieval
+    start = time.perf_counter()
+
+    results = search(
+        question,
+        top_k=top_k,
+        corpus=corpus,
+        variant=variant
+    )
+
+    retrieval_time = time.perf_counter() - start
+
+
+    # 2. Gate
+    start = time.perf_counter()
+
     decision = gate.check(results, threshold=threshold)
 
-    if not decision.passed:
-        return gate.REFUSAL, results, decision
+    gate_time = time.perf_counter() - start
 
-    # cache=False on purpose. Three runs have to be three real answers.
-    answer = answer_from_chunks(question, results, cache=False)
-    return answer, results, decision
+
+    # If gate refuses, there is no generation
+    if not decision.passed:
+        timings = {
+            "retrieval": retrieval_time,
+            "gate": gate_time,
+            "generation": 0,
+            "total": retrieval_time + gate_time,
+        }
+
+        return gate.REFUSAL, results, decision, timings
+
+
+    # 3. Generation
+    start = time.perf_counter()
+
+    answer = answer_from_chunks(
+        question,
+        results,
+        cache=False
+    )
+
+    generation_time = time.perf_counter() - start
+
+
+    timings = {
+        "retrieval": retrieval_time,
+        "gate": gate_time,
+        "generation": generation_time,
+        "total": retrieval_time + gate_time + generation_time,
+    }
+
+    return answer, results, decision, timings
 
 
 def main():
@@ -112,7 +158,7 @@ def main():
         for run in range(1, args.runs + 1):
             start = time.perf_counter()
 
-            answer, results, decision = run_once(
+            answer, results, decision, timings = run_once(
                 question, top_k, threshold, corpus, args.variant
             )
 
@@ -122,10 +168,13 @@ def main():
 
             mark = {True: "pass", False: "fail", None: "—"}[passed]
             print(
-                f"  run {run}: {mark} "
-                f"(best distance {decision.best_distance:.3f}, "
-                f"time {elapsed:.2f}s)"
-)
+                    f"  run {run}: {mark} "
+                    f"(best distance {decision.best_distance:.3f})\n"
+                    f"    retrieval: {timings['retrieval']:.3f}s\n"
+                    f"    gate: {timings['gate']:.3f}s\n"
+                    f"    generation: {timings['generation']:.3f}s\n"
+                    f"    total: {timings['total']:.3f}s"
+                )
 
             transcript.append(
                 {
@@ -134,6 +183,7 @@ def main():
                     "answer": answer,
                     "sources": sorted({r.source for r in results}),
                     "best_distance": decision.best_distance,
+                    "timings": timings,
                     "gate_passed": decision.passed,
                 }
             )
@@ -210,7 +260,7 @@ def write_report(rows, transcript, gate_rows, args, corpus, top_k, threshold, sc
         "of your questions had the answer in the retrieved chunks, and so on.",
         "",
         f"| Question | {run_headers} |",
-        f"|---|{run_divider}|",
+        f"|---|{run_divider}|"
     ]
 
     for row in rows:
@@ -263,6 +313,10 @@ def write_report(rows, transcript, gate_rows, args, corpus, top_k, threshold, sc
             f"- Best distance: {entry['best_distance']:.4f} "
             f"({'passed' if entry['gate_passed'] else 'refused by'} the gate)",
             f"- Sources retrieved: {', '.join(entry['sources']) or 'none'}",
+            f"- Retrieval time: {entry['timings']['retrieval']:.3f}s",
+            f"- Gate time: {entry['timings']['gate']:.3f}s",
+            f"- Generation time: {entry['timings']['generation']:.3f}s",
+            f"- Total time: {entry['timings']['total']:.3f}s",
             "",
             "```",
             entry["answer"],

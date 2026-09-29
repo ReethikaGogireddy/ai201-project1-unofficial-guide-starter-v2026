@@ -290,10 +290,16 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
 **What I changed:**
 
+     I added separate timing measurements for retrieval, the relevance gate, and answer generation.
+
+
+
 **Why I picked it:**
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
+
+     My original timing measured the entire pipeline together, so I could not tell which stage caused the delay. Measuring each stage separately helped identify where the extra time was coming from.
 
 ### Run Log — After
 
@@ -302,11 +308,11 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 5 of 5 | pass | pass | pass | MET |
+| 2. Every answer names a source | 5 of 5 | pass | pass | pass  | MET |
+| 3. Gate stops out-of-corpus questions | 5 of 5 | pass | pass | pass | MET |
+| 4. No chunk should contain only headings or formatting | 5 of 5 | pass | pass | pass | MET |
+| 5. The system answers each test question in under 5 seconds| 5 of 5 | pass | pass | pass | MET |
 
 **Did it help?**
 
@@ -317,6 +323,8 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
      Milestone 4. -->
 
+     The results show that it worked, but I really don't think anything I did changed that because I only checked the time taken by the different stages. I observed that only the first retrieval takes a bit of time, while the rest are really fast. So, I think it has more to do with the first-time initialization or retrieval rather than the stages themselves.
+
 ## What's Still Broken
 
 <!-- For each criterion still missed after your fix: what you'd do about it,
@@ -326,6 +334,7 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
      not.
 
      Milestone 5. -->
+
 
 ## What I'd Do Differently
 
