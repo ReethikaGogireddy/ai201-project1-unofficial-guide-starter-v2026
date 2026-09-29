@@ -335,6 +335,8 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
      Milestone 5. -->
 
+     Though the criterion 5 passed, I still think it previously missed only because of the cold start.
+
 
 ## What I'd Do Differently
 
@@ -342,3 +344,5 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
      differently, and why?
 
      Milestone 5. -->
+
+     I think I will change Criterion 4 to check whether the answer is concise or not. I will do this by capping the number of sentences at three and checking whether the question is still fully answered.
