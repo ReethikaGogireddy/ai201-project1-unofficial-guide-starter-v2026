@@ -191,15 +191,59 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 5 of 5 | pass | pass | pass | MET |
+| 2. Every answer names a source | 5 of 5 | pass | pass | pass | MET |
+| 3. Gate stops out-of-corpus questions | 5 of 5 | pass | pass |  pass| MET |
+| 4. No chunk should contain only headings or formatting | 5 of 5| pass | pass | pass| MET|
+| 5. The system answers each test question in under 5 seconds |4 of 5 | fail | pass | pass| MISSING|
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+
+     1. Retrieved chunk contains the answer:
+
+     Based on the documents provided, the library is open until 2am during term and until 10pm during reading week. 
+
+     This information comes from `study_library_hours.txt` (and is also mentioned in `housing_morrow_house_noise.txt` and `housing_calder_annexe_noise.txt`).
+
+     File: results/run_2026-09-28_1630_before.md
+     Produced by: run_eval.py::main
+
+     2. Every answer names a source
+
+     Based on the provided documents, the library is open until 2am during term and until 10pm during reading week. 
+
+     Sources: 
+     - `study_library_hours.txt`
+     - `housing_morrow_house_noise.txt`
+     - `housing_calder_annexe_noise.txt`
+
+     File: results/run_2026-09-28_1630_before.md
+     Produced by: run_eval.py::main
+
+     3. Gate stops out-of-corpus questions
+
+     | What is the capital of Mongolia? | 0.825 | refused |
+
+     File: results/run_2026-09-28_1630_before.md
+     Produced by: run_eval.py::check_out_of_scope
+
+
+     4. No chunk should contain only headings or formatting 
+
+     Yes, your student account gives you campus wifi. 
+       
+     File: results/run_2026-09-28_1630_before.md
+     Produced by:`chunker.py::split_documents`
+
+     5. The system answers each test question in under 5 seconds
+
+     run 1: — (best distance 0.352, time 0.76s)
+
+
+     File: run_eval.py
+     Produced by: run_eval.py::main
 
 ## Verdicts
 
