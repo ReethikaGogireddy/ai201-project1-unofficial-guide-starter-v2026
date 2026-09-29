@@ -258,11 +258,11 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunk contains the answer | MET | Manually verified that the retrieved chunks contained the information needed to answer each question.  |
+| 2 | Every answer names a source | MET | Checked the results file and verified that each generated answer names at least one source file. |
+| 3 | Gate stops out-of-corpus questions | MET | Verified that the relevance gate refused all five out-of-corpus questions. |
+| 4 | No chunk should contain only headings or formatting  | MET | Manually inspected the chunks and verified that none contained only headings or formatting.  |
+| 5 | The system answers each test question in under 5 seconds | MISSED  | Measured and printed the response time for each question; at least one response took more than 5 seconds. |
 
 ## Diagnoses
 
