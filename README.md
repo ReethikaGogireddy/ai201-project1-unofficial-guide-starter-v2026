@@ -284,7 +284,7 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
      Milestone 3. -->
 
-     Criterion 5: The total pipeline exceeded five seconds for some questions. Since the current timing measures retrieval, gating, and generation together, I cannot yet isolate which stage caused the delay.
+     Criterion 5: The response-time miss was caused by the initial retrieval taking longer than subsequent retrievals. After measuring each stage separately, I observed that the first retrieval had additional initialization overhead, while later retrievals were much faster.
 
 ## The Improvement
 
