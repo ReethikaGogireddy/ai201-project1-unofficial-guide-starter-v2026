@@ -284,6 +284,8 @@ Based on the above data all of my distance doesn't cross 0.48, but I am increasi
 
      Milestone 3. -->
 
+     Criterion 5: The total pipeline exceeded five seconds for some questions. Since the current timing measures retrieval, gating, and generation together, I cannot yet isolate which stage caused the delay.
+
 ## The Improvement
 
 **What I changed:**
